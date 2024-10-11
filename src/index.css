@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* ------------------------ General styling ------------------- */
+*{
+  width: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+body {
+  background-color: #fff;
+  margin-top: 50px;
+}
+
+
+/* ------ navbar styling ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1E2E96;
+  padding: 5px 10px;
+  height: 50px;
+  width: 100%;  /* Full width of the screen */
+  position:fixed;
+  top: 0; /* Stick to the top */
+  left: 0;
+  z-index: 1000;  /* Ensure the navbar is above other content */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Logo styling */
+.logo {
+  width: 200px;
+  height: auto;
+  padding-left: 5px;
+  margin-right: 10px;
+}
+
+
+/* Language dropdown styling */
+.language-dropdown {
+  background-color: white;
+  color: black;
+  padding: 2px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+
+.Lan-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+
+/* ----------------- Main ---------------------- */
+
+#root{
+  height: 100vh;
+}
+
+.currency-converter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 40px 50px 10px;
+}
+
+.currency-converter .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0  50px 50px;
+  font-size: 20px;
+}
+
+.subtile {
+  padding-top: 5px;
+  font-style: italic;
+  font-size: 20px;
+}
