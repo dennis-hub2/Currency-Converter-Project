@@ -13,7 +13,7 @@ const NavBar = () => {
     <nav className="navbar">
       <div className="navbar-left">
         <img
-          src="\src/assets/logo with text.png"
+          src="/logowithtext.png"
           alt="Company Logo"
           className="logo"
         />
