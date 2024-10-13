@@ -10,13 +10,21 @@
   font-family: "Montserrat", sans-serif;
 }
 
+html, body {
+  margin: 0;
+  height: 100%; /* Ensure body takes full height */
+}
+
 a{
   text-decoration: none;
   color: white;
 }
+
 body {
-  background-color: #fff;
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
 }
 
 
@@ -27,7 +35,7 @@ body {
   align-items: center;
   background-color: #1E2E96;
   padding: 5px 10px;
-  height: 50px;
+  height: 45px;
   width: 100%;  /* Full width of the screen */
   position:fixed;
   top: 0; /* Stick to the top */
@@ -49,7 +57,6 @@ body {
   margin-right: 10px;
 }
 
-
 /* Language dropdown styling */
 .language-dropdown {
   background-color: white;
@@ -58,7 +65,6 @@ body {
   font-size: 12px;
   border-radius: 5px;
 }
-
 
 .Lan-navbar {
   display: flex;
@@ -70,16 +76,15 @@ body {
 
 /* ----------------- Main ---------------------- */
 
-#root{
-  height: 100vh;
+#root {
+  height: 100%;
 }
-
 .currency-converter {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  padding: 40px 50px 10px;
+  padding: 10px 50px 10px;
 }
 
 .currency-converter .title {
@@ -87,12 +92,222 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0  50px 50px;
-  font-size: 20px;
+  margin-top: 5px;
+  padding: 0  50px 20px;
+  font-size: 15px;
 }
 
 .subtile {
   padding-top: 5px;
   font-style: italic;
-  font-size: 20px;
+  font-size: 15px;
+}
+
+
+/* converter form */
+.converter-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 3% 5%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0  auto;
+
+}
+
+.form-group, .form-currency-group {
+  margin-bottom: 30px;
+}
+
+
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 9px;
+  font-size: 1.1rem;
+}
+
+#amount.form-input {
+  margin-top: 9px;
+}
+
+
+#amount.form-input::placeholder{
+  /* Style for the input placeholder */
+  color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  opacity: 0.5; /* Ensures the opacity is respected */
+}
+
+.form-input {
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0 15px;
+  color: #000;
+  font-weight: 500;
+  min-height: 48px;
+  width: 100%;
+  border-radius: 6px;
+  background: hwb(0 100% 50% / 0.1);
+  border: 1px solid hwb(0 100% 0% / 0.5);
+}
+
+.form-container {
+  display: flex; /* Flexbox layout */
+  flex-direction: row;
+  align-items: center; /* Vertically center items */
+  justify-content: space-between; /* Space between items */
+}
+
+.currency-select {
+  display: flex;
+  padding: 0 20px 0 5px;
+  min-height: auto;
+  width: 130px;
+  margin-right: 10px;
+  align-items: center;
+  border-radius: 6px;
+  background: hwb(0 100% 50% / 0.1);
+  border: 1px solid hwb(0 100% 0% / 0.5);
+}
+
+.currency-select img {
+  width: 35px;
+}
+
+.currency-dropdown {
+  outline: none;
+  border: none;
+  background: none;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0 5px;
+}
+
+.currency-dropdown option {
+  color: #000;
+  font-weight: 500;
+}
+
+.swap-icon {
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  margin-top: 25px;
+  background: hwb(0 100% 50% / 0.1);
+  border: 1px solid hwb(0 100% 0% / 0.5);
+  transition: 0.2s ease;
+}
+
+.swap-icon:hover {
+  background: hwb(0 100% 50% / 0.1);
+}
+
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  background-color: rgba(30, 46, 150);
+  color: #fff;
+  width: 60%;
+  margin-top: 30px;
+  min-height: 50px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.submit-button:hover {
+  background: rgba(30, 46, 150, 0.8);
+}
+
+
+.exchange-rate {
+  padding: 0 50px  10px 50px;
+}
+
+.exchange-rate-result {
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 15px 0;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  background: whitesmoke;
+}
+
+.disclaimer {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.disclaimer img {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+
+/* details */
+
+.details{
+  align-items: center;
+  width: 70%;
+  margin-top: 30px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.details span{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
+}
+
+.details a {
+  font-size: 13px;
+  font-weight: 500;
+  color: black;
+}
+
+.socials-icon {
+  display: flex;
+  flex-direction: row;
+}
+
+.icons img {
+  padding: 10px;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+.footer{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer p {
+  font-size: 12px;
+  font-weight: 500;
 }
