@@ -12,7 +12,7 @@
 
 html, body {
   margin: 0;
-  height: 100%; /* Ensure body takes full height */
+  height: 100%; 
 }
 
 a{
@@ -36,7 +36,7 @@ body {
   background-color: #1E2E96;
   padding: 5px 10px;
   height: 45px;
-  width: 100%;  /* Full width of the screen */
+  width: 100%;  
   position:fixed;
   top: 0; /* Stick to the top */
   left: 0;
@@ -53,7 +53,6 @@ body {
 .logo {
   width: 12.5rem;
   height: auto;
-  /* padding-left: 5px; */
   margin-right: 10px;
 }
 
@@ -70,7 +69,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* padding-right: 20px; */
 }
 
 
@@ -113,12 +111,11 @@ body {
   padding: 3% 5%;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   max-width: 700px;
-  margin: 0  auto;
 
 }
 
 .form-group, .form-currency-group {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 
@@ -155,10 +152,10 @@ body {
 }
 
 .form-container {
-  display: flex; /* Flexbox layout */
+  display: flex; 
   flex-direction: row;
-  align-items: center; /* Vertically center items */
-  justify-content: space-between; /* Space between items */
+  align-items: center; 
+  justify-content: space-between; 
 }
 
 .currency-select {
@@ -266,7 +263,9 @@ body {
 
 
 /* details */
-
+.container{
+  width: 100%;
+}
 .details{
   align-items: center;
   width: 70%;
@@ -321,9 +320,18 @@ body {
 
 /* Footer menu toggle button */
 
+@media (max-width: 768px) {
+  .converter-form{
+    padding: 7%;
+  }
 
-/* Footer style for small screens (below 700px) */
-@media (max-width: 600px) {
+  .currency-converter{
+    padding: 3rem;
+  }
+
+  .submit-button{
+    margin-top: 1.25rem;
+  }
   .footer {
     position: fixed;
     top: 0;
@@ -336,7 +344,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    /* padding: 20px; */
     transition: right 0.5s ease; 
     z-index: 999;
   }
@@ -353,18 +360,19 @@ body {
 .footer-menu-toggle:hover {
   background-color: #1E2E96;
 }
+
+.footer p {
+  margin-left: 40%;
+}
   .Lan-navbar {
-  /* margin-right: auto;
-  margin-left: 20px; */
-  margin-left: 15.625rem;
+  margin-left: auto;
 }
   .footer.show {
     right: 0; /* Slide in from the right */
   }
 
   .details-link {
-    /* display: flex; */
-    flex-direction: column; /* Column layout */
+    flex-direction: column; 
     gap: 10px;
   }
 
@@ -384,33 +392,80 @@ body {
 
   .footer-menu-toggle {
     display: block;
-    /* margin-left: 20px; */
     z-index: 1000;
   }
 
-  /* .currency-converter {
-
-  } */
-}
-
-/* Style for larger screens */
-@media (min-width: 701px) {
-  .footer {
-    display: block;
-    position: static;
-    background-color: #1E2E96;
-    color: black;
+  .icons{
+    display: flex;
+    justify-content: center;
+    padding-left: 100px;
+    width: 100px;
   }
 
+}
+
+
+@media (max-width: 480px) {
+  * {
+    box-sizing: border-box;
+  }
+  .converter-title{
+    font-size: 1.6rem;
+  }
+
+  .converter-form{
+    padding: 10%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  .form-label{
+    font-size: 1rem;
+  }
+  .form-group{
+    margin-bottom: 0.625rem;
+  }
+  .submit-button{
+    font-size: 1rem;
+  }
+  .notice{
+    font-size: 0.6rem;
+  }
+  .currency-select{
+    margin: 0;
+  }
+
+  .swap-container{
+    margin-right: 0.625rem;
+    margin-left: 0.625rem;
+  }
+
+  .swap-icon{
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .icons{
+    display: flex;
+    justify-content: center;
+    padding-left: 100px;
+    width: 100px;
+  }
+
+  .footer p {
+  margin-left: 40%;
+}
+}
+
+
+@media (min-width: 1024px) {
   .footer-menu-toggle {
     display: none;
   }
+}
 
-  .details-link {
-    flex-direction: row; /* Default row layout */
-  }
 
-  .details-link a {
-    padding: 0;
+/* Hide the menu button between 768px and 1040px */
+@media (min-width: 768px) and (max-width: 1040px) {
+  .footer-menu-toggle {
+    display: none; /* Hide the menu button in this range */
   }
 }
