@@ -318,21 +318,6 @@ body {
 
 /* ----------------General Media Query Structure--------------- */
 
-/* NavBar styles */
-/* .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #1E2E96;
-  color: white;
-} */
-
-
-
-/* .language-dropdown {
-  padding: 5px;
-  border-radius: 4px;
-} */
 
 /* Footer menu toggle button */
 
@@ -352,7 +337,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     /* padding: 20px; */
-    transition: right 0.5s ease; /* Smooth slide-in */
+    transition: right 0.5s ease; 
     z-index: 999;
   }
 
