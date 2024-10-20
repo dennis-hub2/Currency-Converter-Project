@@ -166,24 +166,30 @@ const currencyToCountryCode = {
 };
 
 const currencyCodes = Object.keys(currencyToCountryCode);
+// Gets all currency codes as an array to populate the dropdown list later
 
 const CurrencySelect = ({ selectedCurrency, handleCurrency }) => {
   const countryCode = currencyToCountryCode[selectedCurrency] || "default";
+  // Looks up the country code for the selected currency; if not found, defaults to 'default'
 
   return (
     <div className="currency-select">
       <img
         src={`https://flagsapi.com/${countryCode}/shiny/64.png`}
+        // Dynamically loads the flag image based on the country code
         alt={`${selectedCurrency} Flag`}
+        // Alt attribute for the flag, useful for accessibility and SEO
       />
       <select
         onChange={handleCurrency}
+        // Calls the handleCurrency function whenever the user selects a new currency
         className="currency-dropdown"
         value={selectedCurrency}>
         {currencyCodes.map((currency) => (
           <option key={currency} value={currency}>
             {currency}
           </option>
+          // Loops through each currency code and creates an option in the dropdown
         ))}
       </select>
     </div>

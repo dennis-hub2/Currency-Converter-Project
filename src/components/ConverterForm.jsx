@@ -2,57 +2,70 @@ import React, { useState } from "react";
 import CurrencySelect from "./CurrencySelect";
 
 const ConverterForm = () => {
-  const [amount, setAmount] = useState(""); // State for the amount
-  const [fromCurrency, setFromCurrency] = useState("USD"); // Default currency
-  const [toCurrency, setToCurrency] = useState("GBP"); // Default currency
-  const [result, setResult] = useState(""); // State for the final conversion result
+  const [amount, setAmount] = useState("");
+  // Stores the amount entered by the user
+
+  const [fromCurrency, setFromCurrency] = useState("USD");
+  // Default 'from' currency set to USD
+
+  const [toCurrency, setToCurrency] = useState("GBP");
+  // Default 'to' currency set to GBP
+
+  const [result, setResult] = useState("");
+  // Holds the result of the currency conversion
 
   const handleSwapCurrencies = () => {
     setFromCurrency(toCurrency);
     setToCurrency(fromCurrency);
+    // Swap 'from' and 'to' currencies when called
   };
 
-  // Function to fetch the exchange rate and update the result
   const getExchangeRate = async () => {
     const API_KEY = import.meta.env.VITE_API_KEY;
+    // API key for accessing the exchange rate API
     const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${fromCurrency}/${toCurrency}`;
+    // Constructs the URL for fetching the exchange rate based on selected currencies
 
     try {
       const response = await fetch(API_URL);
+      // Fetches the exchange rate from the API
+
       if (!response.ok) throw Error("Something went wrong");
+      // Checks if the response is successful
 
       const data = await response.json();
-      const rate = data.conversion_rate; // Get the exchange rate
+      const rate = data.conversion_rate;
+      // Extracts the conversion rate from the API response
 
-      // Calculate the result for the amount entered
-      const convertedAmount = (rate * parseFloat(amount)).toFixed(3); // Multiply amount by rate and format to 2 decimal places
+      const convertedAmount = (rate * parseFloat(amount)).toFixed(3);
+      // Multiplies the amount by the rate and formats it to 3 decimal places
 
-      // Set result as the converted amount
       setResult(`${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`);
+      // Updates the result state with the converted amount
     } catch (error) {
       console.log(error);
+      // Logs any errors that occur during the API request
     }
   };
 
-  // Handle form submission
   const handleFormSubmit = (e) => {
     e.preventDefault();
     getExchangeRate();
+    // Prevents the form's default submit behavior and calls the conversion function
   };
 
-  // Handle focus to clear the input field when clicked
   const handleFocus = () => {
     if (amount === "") {
-      setAmount(""); // Clear input when focused
+      setAmount("");
+      // Clears the input field when focused if no amount is entered
     }
   };
 
-  // Handle amount change and ensure only numbers are entered
   const handleAmountChange = (e) => {
     const value = e.target.value;
     if (/^\d*\.?\d*$/.test(value)) {
-      // Allow only numbers and decimals
       setAmount(value);
+      // Updates the amount state only if the input is a valid number or decimal
     }
   };
 
@@ -62,6 +75,8 @@ const ConverterForm = () => {
       autoComplete="off"
       id="convertor-form"
       onSubmit={handleFormSubmit}>
+      {/* Form element that handles currency conversion submission */}
+
       <div className="form-group">
         <label className="form-label" htmlFor="amount">
           Amount
@@ -71,8 +86,10 @@ const ConverterForm = () => {
             className="form-input"
             value={amount}
             placeholder="eg. $100"
-            onFocus={handleFocus} // Clear on focus
-            onChange={handleAmountChange} // Handle number-only input
+            onFocus={handleFocus}
+            // Clears the input when focused
+            onChange={handleAmountChange}
+            // Validates and updates amount input
             required
           />
         </label>
@@ -86,6 +103,7 @@ const ConverterForm = () => {
           <CurrencySelect
             selectedCurrency={fromCurrency}
             handleCurrency={(e) => setFromCurrency(e.target.value)}
+            // Updates the selected 'from' currency
           />
         </div>
 
@@ -111,6 +129,7 @@ const ConverterForm = () => {
           <CurrencySelect
             selectedCurrency={toCurrency}
             handleCurrency={(e) => setToCurrency(e.target.value)}
+            // Updates the selected 'to' currency
           />
         </div>
       </div>
@@ -119,12 +138,13 @@ const ConverterForm = () => {
         <button type="submit" className="submit-button">
           Get Exchange Rate
         </button>
+        {/* Button to submit the form and fetch the exchange rate */}
       </div>
 
-      {/* Only render the result when it's available */}
       {result && (
         <div className="exchange-rate">
           <p className="exchange-rate-result">{result}</p>
+          {/* Displays the conversion result if available */}
         </div>
       )}
 
@@ -139,6 +159,7 @@ const ConverterForm = () => {
           We use the mid-market rate for our Converter. This is for
           informational purposes only. You won’t receive this rate when sending
           money.
+          {/* Disclaimer for the users about the rates */}
         </span>
       </div>
     </form>
